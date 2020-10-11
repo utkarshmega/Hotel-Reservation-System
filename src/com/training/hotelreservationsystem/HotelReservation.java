@@ -12,10 +12,12 @@ public class HotelReservation {
 
 			System.out.println("Enter hotel name");
 			String hotel_name = sc.next();
-			System.out.println("Enter rate for regular customer");
-			int rate = sc.nextInt();
+			System.out.println("Enter week day rate for regular customer");
+			int weekDayrate = sc.nextInt();
+			System.out.println("Enter week day rate for regular customer");
+			int weekEndrate = sc.nextInt();
 
-			HotelReservationMethods.addHotel(hotel_name, rate);
+			HotelReservationMethods.addHotel(hotel_name, weekDayrate, weekEndrate);
 			System.out.println("To add more hotel Y/N");
 			char choice = sc.next().charAt(0);
 			if (choice == 'Y' || choice == 'y')
