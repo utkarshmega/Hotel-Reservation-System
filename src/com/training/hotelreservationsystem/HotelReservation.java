@@ -14,12 +14,16 @@ public class HotelReservation {
 			String hotel_name = sc.next();
 			System.out.println("Enter week day rate for regular customer");
 			int weekDayrate = sc.nextInt();
+			System.out.println("Enter special week day rate for reward customer");
+			int special_WeekDay_rate = sc.nextInt();
 			System.out.println("Enter week end rate for regular customer");
 			int weekEndrate = sc.nextInt();
+			System.out.println("Enter special week end rate for reward customer");
+			int special_WeekEnd_rate = sc.nextInt();
 			System.out.println("Enter the hotel rating from 1-5");
 			int hotelRating = sc.nextInt();
 
-			HotelReservationMethods.addHotel(hotel_name, weekDayrate, weekEndrate, hotelRating);
+			HotelReservationMethods.addHotel(hotel_name, weekDayrate, weekEndrate, hotelRating, special_WeekDay_rate, special_WeekEnd_rate);
 			System.out.println("To add more hotel Y/N");
 			char choice = sc.next().charAt(0);
 			if (choice == 'Y' || choice == 'y')

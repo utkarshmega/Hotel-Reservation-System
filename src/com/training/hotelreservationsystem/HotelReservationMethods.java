@@ -9,8 +9,8 @@ public class HotelReservationMethods {
 
 	static ArrayList<Hotel> hotel = new ArrayList<>();
 
-	public static void addHotel(String hotel_name, int weekDayrate, int weekEndrate, int hotelRating) {
-		hotel.add(new Hotel(hotel_name, weekDayrate, weekEndrate, hotelRating));
+	public static void addHotel(String hotel_name, int weekDayrate, int weekEndrate, int hotelRating, int special_WeekDay_rate, int special_WeekEnd_rate) {
+		hotel.add(new Hotel(hotel_name, weekDayrate, weekEndrate, hotelRating, special_WeekDay_rate, special_WeekEnd_rate));
 	}
 
 	/**
