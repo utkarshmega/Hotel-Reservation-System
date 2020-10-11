@@ -61,5 +61,39 @@ public class HotelReservationMethods {
 		System.out.println("Total cost : " + minimumRate);
 		
 	}
+	
+	public static void findBestRatedHotel(String startDate, String lastDate) {
+		LocalDate entryDate = LocalDate.parse(startDate);
+		LocalDate exitDate = LocalDate.parse(lastDate);
+
+		int weekEndDays = 0, weekDays = 0;
+		
+		for (LocalDate date = entryDate; date.isBefore(exitDate); date = date.plusDays(1)) {
+			int day = date.getDayOfWeek().getValue();
+			if (day == 6 || day == 7) {
+				weekEndDays++;
+			} else
+				weekDays++;
+		}
+		if (exitDate.getDayOfWeek().getValue() == 6 || exitDate.getDayOfWeek().getValue() == 7)
+			weekEndDays++;
+		else
+			weekDays++;
+		
+		String hotelName = "";
+		int tempRating = 0, cost = 0;
+		for (Hotel hotelList : hotel) {
+		
+			if (hotelList.getRatings() > tempRating) {
+				cost = (hotelList.getWeekDay_rate() * weekDays) + (hotelList.getWeekEnd_Rate() * weekEndDays);
+				hotelName = hotelList.getHotelName();
+				tempRating = hotelList.getRatings();
+				}
+		}
+		System.out.println("Best Rated hotel is \n" + hotelName);
+		System.out.println("Rating : " +tempRating);
+		System.out.println("Total cost : " + cost);
+		
+	}
 
 }

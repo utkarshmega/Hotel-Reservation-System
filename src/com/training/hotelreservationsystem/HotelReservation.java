@@ -34,6 +34,7 @@ public class HotelReservation {
 		System.out.println("Enter last date in format YYYY-MM-DD");
 		String lastDate = sc.next();
 		HotelReservationMethods.findCheapestHotel(startDate, lastDate);
+		HotelReservationMethods.findBestRatedHotel(startDate, lastDate);
 
 	}
 
