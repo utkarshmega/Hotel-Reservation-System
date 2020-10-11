@@ -8,8 +8,6 @@ public class HotelReservation {
 
 		Scanner sc = new Scanner(System.in);
 
-		ArrayList<Hotel> hotel = new ArrayList<>();
-
 		while (true) {
 
 			System.out.println("Enter hotel name");
@@ -17,7 +15,7 @@ public class HotelReservation {
 			System.out.println("Enter rate for regular customer");
 			int rate = sc.nextInt();
 
-			hotel.add(new Hotel(hotel_name, rate));
+			HotelReservationMethods.addHotel(hotel_name, rate);
 			System.out.println("To add more hotel Y/N");
 			char choice = sc.next().charAt(0);
 			if (choice == 'Y' || choice == 'y')
@@ -25,6 +23,13 @@ public class HotelReservation {
 			else
 				break;
 		}
+		
+		System.out.println("Find the cheapest hotel within given date range");
+		System.out.println("Enter start date in format (YYYY-MM-DD");
+		String startDate = sc.next();
+		System.out.println("Enter last date in format (YYYY-MM-DD");
+		String lastDate = sc.next();
+		HotelReservationMethods.findCheapestHotel(startDate, lastDate);
 
 	}
 
