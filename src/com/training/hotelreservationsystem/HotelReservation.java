@@ -40,6 +40,7 @@ public class HotelReservation {
 		HotelReservationMethods.findCheapestHotel(startDate, lastDate);
 		HotelReservationMethods.findBestRatedHotel(startDate, lastDate);
 		HotelReservationMethods.findCheapestHotelForRewardedCustomers(startDate, lastDate);
+		HotelReservationMethods.findBestRatedForRewardedUsingStream(startDate, lastDate);
 
 	}
 
