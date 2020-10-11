@@ -62,6 +62,9 @@ public class HotelReservationMethods {
 		
 	}
 	
+	/**
+	 * find best rated hotel for regular customers
+	 */
 	public static void findBestRatedHotel(String startDate, String lastDate) {
 		LocalDate entryDate = LocalDate.parse(startDate);
 		LocalDate exitDate = LocalDate.parse(lastDate);
@@ -93,6 +96,55 @@ public class HotelReservationMethods {
 		System.out.println("Best Rated hotel is \n" + hotelName);
 		System.out.println("Rating : " +tempRating);
 		System.out.println("Total cost : " + cost);
+		
+	}
+	
+	/**
+	 * to find the cheapest hotel for rewarded customers
+	 */
+	public static void findCheapestHotelForRewardedCustomers(String startDate, String lastDate) {
+		LocalDate entryDate = LocalDate.parse(startDate);
+		LocalDate exitDate = LocalDate.parse(lastDate);
+
+		int weekEndDays = 0, weekDays = 0;
+
+		int minimumRate = Integer.MAX_VALUE;
+		
+		for (LocalDate date = entryDate; date.isBefore(exitDate); date = date.plusDays(1)) {
+			int day = date.getDayOfWeek().getValue();
+			if (day == 6 || day == 7) {
+				weekEndDays++;
+			} else
+				weekDays++;
+		}
+		if (exitDate.getDayOfWeek().getValue() == 6 || exitDate.getDayOfWeek().getValue() == 7)
+			weekEndDays++;
+		else
+			weekDays++;
+
+		ArrayList<Hotel> cheapestHotel = new ArrayList<>();
+		for (Hotel hotelList : hotel) {
+			int temp = (hotelList.getSpecial_WeekDay_rate() * weekDays) + (hotelList.getSpecial_WeekEnd_rate() * weekEndDays);
+			if (temp < minimumRate) {
+				minimumRate = temp;
+				cheapestHotel.clear();
+				cheapestHotel.add(hotelList);
+			}
+			else if(temp == minimumRate) {
+				cheapestHotel.add(hotelList);
+			}
+		}
+		int maxRating = 0;
+		String hotelName = "";
+		for(Hotel printCheapestHotel : cheapestHotel) {
+			if(printCheapestHotel.getRatings()>maxRating) {
+				maxRating = printCheapestHotel.getRatings();
+				hotelName = printCheapestHotel.getHotelName();
+			}
+		}
+		System.out.println("Cheapest Best Rated hotel for rewarded customer is \n" + hotelName);
+		System.out.println("Rating : " +maxRating);
+		System.out.println("Total cost : " + minimumRate);
 		
 	}
 

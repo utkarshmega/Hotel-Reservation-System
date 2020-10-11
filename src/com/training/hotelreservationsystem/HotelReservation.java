@@ -39,6 +39,7 @@ public class HotelReservation {
 		String lastDate = sc.next();
 		HotelReservationMethods.findCheapestHotel(startDate, lastDate);
 		HotelReservationMethods.findBestRatedHotel(startDate, lastDate);
+		HotelReservationMethods.findCheapestHotelForRewardedCustomers(startDate, lastDate);
 
 	}
 
