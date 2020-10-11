@@ -14,7 +14,7 @@ public class HotelReservation {
 			String hotel_name = sc.next();
 			System.out.println("Enter week day rate for regular customer");
 			int weekDayrate = sc.nextInt();
-			System.out.println("Enter week day rate for regular customer");
+			System.out.println("Enter week end rate for regular customer");
 			int weekEndrate = sc.nextInt();
 
 			HotelReservationMethods.addHotel(hotel_name, weekDayrate, weekEndrate);

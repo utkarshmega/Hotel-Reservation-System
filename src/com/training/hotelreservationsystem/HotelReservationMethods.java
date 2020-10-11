@@ -1,5 +1,6 @@
 package com.training.hotelreservationsystem;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -19,13 +20,24 @@ public class HotelReservationMethods {
 		LocalDate entryDate = LocalDate.parse(startDate);
 		LocalDate exitDate = LocalDate.parse(lastDate);
 
-		Period diff = Period.between(entryDate, exitDate);
-		int difference = diff.getDays();
-		System.out.println(difference);
+		int weekEndDays = 0, weekDays = 0;
+
 		int minimumRate = Integer.MAX_VALUE;
 		String hotelName = "";
+		for (LocalDate date = entryDate; date.isBefore(exitDate); date = date.plusDays(1)) {
+			int day = date.getDayOfWeek().getValue();
+			if (day == 6 || day == 7) {
+				weekEndDays++;
+			} else
+				weekDays++;
+		}
+		if (exitDate.getDayOfWeek().getValue() == 6 || exitDate.getDayOfWeek().getValue() == 7)
+			weekEndDays++;
+		else
+			weekDays++;
+
 		for (Hotel hotelList : hotel) {
-			int temp = hotelList.getWeekDay_rate() * difference;
+			int temp = (hotelList.getWeekDay_rate() * weekDays) + (hotelList.getWeekEnd_Rate() * weekEndDays);
 			if (temp < minimumRate) {
 				minimumRate = temp;
 				hotelName = hotelList.getHotelName();
