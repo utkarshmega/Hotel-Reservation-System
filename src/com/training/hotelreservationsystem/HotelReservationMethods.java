@@ -168,12 +168,12 @@ public class HotelReservationMethods {
 		else
 			weekDays++;
 
-		int temp = (h.getSpecial_WeekDay_rate() * weekDays) + (h.getSpecial_WeekEnd_rate() * weekEndDays);
+		int temp = (h.getWeekDay_rate() * weekDays) + (h.getWeekEnd_Rate() * weekEndDays);
 		return temp;
 	}
 
 	/**
-	 * to find the cheapest best rated hotel for rewarded customer using java streams
+	 * to find the cheapest best rated hotel for regular customer using java streams
 	 */
 	public static void findBestRatedForRewardedUsingStream(String startDate, String lastDate) {
 		LocalDate entryDate = LocalDate.parse(startDate);
@@ -186,7 +186,7 @@ public class HotelReservationMethods {
 		Hotel maxRatedHotel = tempList.stream().max((h1,h2) -> h1.getRatings() - h2.getRatings()).get();
 		String hotelName = maxRatedHotel.getHotelName();
 		int maxRating = maxRatedHotel.getRatings();
-		System.out.println("\nThe cheapest best rated hotel for rewarded customer using javaa streams is ");
+		System.out.println("\nThe cheapest best rated hotel for regular customer using java streams is ");
 		System.out.println("Hotel name" +hotelName);
 		System.out.println("Rating : " +maxRating);
 		System.out.println("Total Cost = " +cost);		
