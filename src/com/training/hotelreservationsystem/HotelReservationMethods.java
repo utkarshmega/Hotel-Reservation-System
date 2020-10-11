@@ -23,7 +23,7 @@ public class HotelReservationMethods {
 		int weekEndDays = 0, weekDays = 0;
 
 		int minimumRate = Integer.MAX_VALUE;
-		String hotelName = "";
+		
 		for (LocalDate date = entryDate; date.isBefore(exitDate); date = date.plusDays(1)) {
 			int day = date.getDayOfWeek().getValue();
 			if (day == 6 || day == 7) {
@@ -48,10 +48,18 @@ public class HotelReservationMethods {
 				cheapestHotel.add(hotelList);
 			}
 		}
+		int maxRating = 0;
+		String hotelName = "";
 		for(Hotel printCheapestHotel : cheapestHotel) {
-			System.out.println("Cheapest Hotel : " + printCheapestHotel.getHotelName());
-			System.out.println("Minimum rate: " + minimumRate);
+			if(printCheapestHotel.getRatings()>maxRating) {
+				maxRating = printCheapestHotel.getRatings();
+				hotelName = printCheapestHotel.getHotelName();
+			}
 		}
+		System.out.println("Cheapest Best Rated hotel is \n" + hotelName);
+		System.out.println("Rating : " +maxRating);
+		System.out.println("Total cost : " + minimumRate);
+		
 	}
 
 }
