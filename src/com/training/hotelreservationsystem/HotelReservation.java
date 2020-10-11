@@ -27,9 +27,9 @@ public class HotelReservation {
 		}
 		
 		System.out.println("Find the cheapest hotel within given date range");
-		System.out.println("Enter start date in format (YYYY-MM-DD");
+		System.out.println("Enter start date in format YYYY-MM-DD");
 		String startDate = sc.next();
-		System.out.println("Enter last date in format (YYYY-MM-DD");
+		System.out.println("Enter last date in format YYYY-MM-DD");
 		String lastDate = sc.next();
 		HotelReservationMethods.findCheapestHotel(startDate, lastDate);
 
